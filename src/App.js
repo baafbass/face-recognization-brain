@@ -15,7 +15,7 @@ function App() {
           target="_blank"
           rel="noopener noreferrer"
         >
-          initializing the project
+          So you are working now
         </a>
       </header>
     </div>
