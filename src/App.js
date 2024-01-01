@@ -26,7 +26,7 @@ function App() {
               params={particlesOptions}
             />*/}
 
-{/*<Particles id="tsparticles" url="http://foo.bar/particles.json"/>*/}
+{/* hhh<Particles id="tsparticles" url="http://foo.bar/particles.json"/>*/}
 
     <Navigation />
     <Logo/>
