@@ -2,6 +2,7 @@ import './App.css';
 import Navigation from './components/Navigation/Navigation';
 import Logo from './components/Logo/Logo';
 import ImageLinkForm from './components/ImageLinkForm/ImageLinkForm';
+import FaceRecognition from './components/FaceRecognition/FaceRecognition';
 import Rank from './components/Rank/Rank';
 import {Component} from 'react'
 
@@ -62,24 +63,12 @@ onInputChange = (event) =>
 onButtonSubmit = () => {
   //console.log('click')
 
-fetch("https://api.clarifai.com/v2/models/" + 'face-detection' + "/outputs", returnsetupClarifaiRequestOptions("https://upload.wikimedia.org/wikipedia/commons/thumb/c/c8/Lionel_Messi_WC2022.jpg/250px-Lionel_Messi_WC2022.jpg"))
+fetch("https://api.clarifai.com/v2/models/" 
+  + 'face-detection' + "/outputs", 
+  returnsetupClarifaiRequestOptions(
+    "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c8/Lionel_Messi_WC2022.jpg/250px-Lionel_Messi_WC2022.jpg"))
   .then(response => response.json())
-        .then(result => console.log(result))
-
-
-  // app.models.predict(
-  //   "face-detection",
-  //   "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c8/Lionel_Messi_WC2022.jpg/250px-Lionel_Messi_WC2022.jpg")
-  // .then(
-  // function(response)
-  //   {
-  //   console.log(response);
-  //   },
-  //   function(err)
-  //   {
-
-  //   }
-  //   );
+  .then(result => console.log(result))
 }
 
   render(){
@@ -89,9 +78,7 @@ fetch("https://api.clarifai.com/v2/models/" + 'face-detection' + "/outputs", ret
     <Logo/>
     <Rank/>
     <ImageLinkForm onInputChange = {this.onInputChange} onButtonSubmit = {this.onButtonSubmit}/>
-    {/*
-    
-   <FaceRecognition/>*/} 
+    <FaceRecognition/> 
     </div>
   );
 }
