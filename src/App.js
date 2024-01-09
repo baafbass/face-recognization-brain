@@ -52,23 +52,23 @@ constructor(){
   super();
   this.state = {
     input : '',
+    imageURL: '',
   }
 }
 
 onInputChange = (event) =>
 {
-  console.log(event.target.value);
+  this.setState({input:event.target.value});
 }
 
 onButtonSubmit = () => {
-  //console.log('click')
+  this.setState({imageURL: this.state.input})
 
 fetch("https://api.clarifai.com/v2/models/" 
   + 'face-detection' + "/outputs", 
-  returnsetupClarifaiRequestOptions(
-    "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c8/Lionel_Messi_WC2022.jpg/250px-Lionel_Messi_WC2022.jpg"))
+  returnsetupClarifaiRequestOptions("https://avatars.githubusercontent.com/u/98693906?v=4"))
   .then(response => response.json())
-  .then(result => console.log(result))
+  .then(result => console.log(result.outputs[0].data.regions[0].region_info.bounding_box))
 }
 
   render(){
@@ -78,12 +78,10 @@ fetch("https://api.clarifai.com/v2/models/"
     <Logo/>
     <Rank/>
     <ImageLinkForm onInputChange = {this.onInputChange} onButtonSubmit = {this.onButtonSubmit}/>
-    <FaceRecognition/> 
+    <FaceRecognition imageURL={this.state.imageURL}/> 
     </div>
   );
 }
 
   }
-
-
 export default App;
