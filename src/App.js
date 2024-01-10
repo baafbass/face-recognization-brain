@@ -53,8 +53,29 @@ constructor(){
   this.state = {
     input : '',
     imageURL: '',
+    box: {}
   }
 }
+
+calculateFaceLocation = (data) => {
+  const clarifaiFace = data.outputs[0].data.regions[0].region_info.bounding_box;
+  const image = document.getElementById('inputImage');
+  const width = Number(image.width);
+  const height = Number(image.height);
+
+  return {
+    leftCol: clarifaiFace.left_col*width,
+    topRow: clarifaiFace.top_row*height,
+    rightCol: width - (clarifaiFace.right_col*width),
+    bottomRow: height - (clarifaiFace.bottom_row*height)
+  }
+} 
+
+displayFaceBox = (box) =>{
+ console.log(box);
+ this.setState({box:box});
+}
+
 
 onInputChange = (event) =>
 {
@@ -66,9 +87,10 @@ onButtonSubmit = () => {
 
 fetch("https://api.clarifai.com/v2/models/" 
   + 'face-detection' + "/outputs", 
-  returnsetupClarifaiRequestOptions("https://avatars.githubusercontent.com/u/98693906?v=4"))
+  returnsetupClarifaiRequestOptions("https://cdn.britannica.com/98/236598-050-9F0C5A8D/Mark-Zuckerberg-2019.jpg"))
   .then(response => response.json())
-  .then(result => console.log(result.outputs[0].data.regions[0].region_info.bounding_box))
+  .then(result => this.displayFaceBox(this.calculateFaceLocation(result)))
+  .catch(err => console.log(err))
 }
 
   render(){
@@ -78,7 +100,7 @@ fetch("https://api.clarifai.com/v2/models/"
     <Logo/>
     <Rank/>
     <ImageLinkForm onInputChange = {this.onInputChange} onButtonSubmit = {this.onButtonSubmit}/>
-    <FaceRecognition imageURL={this.state.imageURL}/> 
+    <FaceRecognition box={this.state.box} imageURL={this.state.imageURL}/> 
     </div>
   );
 }
