@@ -7,13 +7,9 @@ import Rank from './components/Rank/Rank';
 import {Component} from 'react'
 
 const returnsetupClarifaiRequestOptions = (imageURL) =>{
-    // Your PAT (Personal Access Token) can be found in the portal under Authentification
     const PAT = 'f2e9e5cd97cf46edabb328d372ecabcd';
-    // Specify the correct user_id/app_id pairings
-    // Since you're making inferences outside your app's scope
     const USER_ID = 'baafbass';       
     const APP_ID = 'smartbrain';
-    // Change these to whatever model and image URL you want to use
     const MODEL_ID = 'face-detection';    
     const IMAGE_URL = imageURL;
 
@@ -87,7 +83,7 @@ onButtonSubmit = () => {
 
 fetch("https://api.clarifai.com/v2/models/" 
   + 'face-detection' + "/outputs", 
-  returnsetupClarifaiRequestOptions("https://cdn.britannica.com/98/236598-050-9F0C5A8D/Mark-Zuckerberg-2019.jpg"))
+  returnsetupClarifaiRequestOptions(this.state.input))
   .then(response => response.json())
   .then(result => this.displayFaceBox(this.calculateFaceLocation(result)))
   .catch(err => console.log(err))
