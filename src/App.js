@@ -3,6 +3,7 @@ import Navigation from './components/Navigation/Navigation';
 import Logo from './components/Logo/Logo';
 import ImageLinkForm from './components/ImageLinkForm/ImageLinkForm';
 import FaceRecognition from './components/FaceRecognition/FaceRecognition';
+import SignIn from './components/SignIn/SignIn';
 import Rank from './components/Rank/Rank';
 import {Component} from 'react'
 
@@ -49,7 +50,8 @@ constructor(){
   this.state = {
     input : '',
     imageURL: '',
-    box: {}
+    box: {},
+    route: 'SignIn'
   }
 }
 
@@ -89,15 +91,26 @@ fetch("https://api.clarifai.com/v2/models/"
   .catch(err => console.log(err))
 }
 
+onRouteChange = (route)=>{
+  this.setState({route: route})
+}
+
   render(){
       return (
     <div className="App">
-    <Navigation />
+    <Navigation onRouteChange={this.onRouteChange}/>
+
+    { this.state.route === 'SignIn' 
+    ? <SignIn onRouteChange = {this.onRouteChange}/> 
+    : 
+    <div>
     <Logo/>
     <Rank/>
     <ImageLinkForm onInputChange = {this.onInputChange} onButtonSubmit = {this.onButtonSubmit}/>
     <FaceRecognition box={this.state.box} imageURL={this.state.imageURL}/> 
     </div>
+  }
+  </div>
   );
 }
 
