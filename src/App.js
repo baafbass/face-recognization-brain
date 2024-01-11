@@ -4,6 +4,7 @@ import Logo from './components/Logo/Logo';
 import ImageLinkForm from './components/ImageLinkForm/ImageLinkForm';
 import FaceRecognition from './components/FaceRecognition/FaceRecognition';
 import SignIn from './components/SignIn/SignIn';
+import Register from './components/Register/Register';
 import Rank from './components/Rank/Rank';
 import {Component} from 'react'
 
@@ -100,15 +101,15 @@ onRouteChange = (route)=>{
     <div className="App">
     <Navigation onRouteChange={this.onRouteChange}/>
 
-    { this.state.route === 'SignIn' 
-    ? <SignIn onRouteChange = {this.onRouteChange}/> 
-    : 
-    <div>
+    { this.state.route === 'home' 
+    ?     <div>
     <Logo/>
     <Rank/>
     <ImageLinkForm onInputChange = {this.onInputChange} onButtonSubmit = {this.onButtonSubmit}/>
     <FaceRecognition box={this.state.box} imageURL={this.state.imageURL}/> 
     </div>
+    : (this.state.route === 'SignIn' ? <SignIn onRouteChange = {this.onRouteChange}/> : <Register onRouteChange = {this.onRouteChange}/>) 
+
   }
   </div>
   );
