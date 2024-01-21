@@ -52,7 +52,8 @@ constructor(){
     input : '',
     imageURL: '',
     box: {},
-    route: 'SignIn'
+    route: 'SignIn',
+    isSignedIn: false,
   }
 }
 
@@ -93,22 +94,32 @@ fetch("https://api.clarifai.com/v2/models/"
 }
 
 onRouteChange = (route)=>{
+  if(route === 'SignOut')
+  {
+    this.setState({isSignedIn: false});
+  } else if(route === 'home')
+  {
+    this.setState({isSignedIn: true});
+  }
   this.setState({route: route})
 }
 
   render(){
+  const {isSignedIn,box,imageURL,route} = this.state;
+
+
       return (
     <div className="App">
-    <Navigation onRouteChange={this.onRouteChange}/>
+    <Navigation isSignedIn={isSignedIn} onRouteChange={this.onRouteChange}/>
 
     { this.state.route === 'home' 
     ?     <div>
     <Logo/>
     <Rank/>
     <ImageLinkForm onInputChange = {this.onInputChange} onButtonSubmit = {this.onButtonSubmit}/>
-    <FaceRecognition box={this.state.box} imageURL={this.state.imageURL}/> 
+    <FaceRecognition box={box} imageURL={imageURL}/> 
     </div>
-    : (this.state.route === 'SignIn' ? <SignIn onRouteChange = {this.onRouteChange}/> : <Register onRouteChange = {this.onRouteChange}/>) 
+    : (route === 'SignIn' ? <SignIn onRouteChange = {this.onRouteChange}/> : <Register onRouteChange = {this.onRouteChange}/>) 
 
   }
   </div>
