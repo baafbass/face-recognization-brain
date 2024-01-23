@@ -132,11 +132,11 @@ onRouteChange = (route)=>{
     { this.state.route === 'home' 
     ?     <div>
     <Logo/>
-    <Rank/>
+    <Rank name = {this.state.user.name} entries= {this.state.user.entries}/>
     <ImageLinkForm onInputChange = {this.onInputChange} onButtonSubmit = {this.onButtonSubmit}/>
     <FaceRecognition box={box} imageURL={imageURL}/> 
     </div>
-    : (route === 'SignIn' ? <SignIn onRouteChange = {this.onRouteChange}/> : <Register loadUser={this.loadUser} onRouteChange = {this.onRouteChange}/>) 
+    : (route === 'SignIn' ? <SignIn loadUser={this.loadUser} onRouteChange = {this.onRouteChange}/> : <Register loadUser={this.loadUser} onRouteChange = {this.onRouteChange}/>) 
 
   }
   </div>
