@@ -99,15 +99,79 @@ onInputChange = (event) =>
   this.setState({input:event.target.value});
 }
 
-onButtonSubmit = () => {
+onPictureSubmit = () => {
   this.setState({imageURL: this.state.input})
+
 
 fetch("https://api.clarifai.com/v2/models/" 
   + 'face-detection' + "/outputs", 
   returnsetupClarifaiRequestOptions(this.state.input))
-  .then(response => response.json())
-  .then(result => this.displayFaceBox(this.calculateFaceLocation(result)))
+  .then(result => result.json())
+  .then(response => {
+    if(response)
+    {
+      fetch('http://localhost:3000/image',{
+        method:'put',
+        headers: {'Content-type':'application/json'},
+        body: JSON.stringify({
+          id:this.state.user.id
+        })
+      })
+      .then(response => response.json())
+      .then(count=>{
+        this.setState(Object.assign(this.state.user,{entries:count}))
+      })
+    }
+    this.displayFaceBox(this.calculateFaceLocation(response))})
   .catch(err => console.log(err))
+
+
+// fetch("https://api.clarifai.com/v2/models/" 
+//   + 'face-detection' + "/outputs", 
+//   returnsetupClarifaiRequestOptions(this.state.input))
+// .then(response => {
+//     if(response){
+//       fetch('http://localhost:3000/image',{
+//         method: 'put',
+//         headers: {'Content-type': 'application/json'},
+//         body: JSON.stringify({
+//           id : this.state.user.id
+//         })
+//       })
+//     }
+//   }
+//   )
+// .then(result => {
+//   this.displayFaceBox(this.calculateFaceLocation(result))
+//   .catch(err => console.log(err))
+// })
+// .then(res => res.json())
+// .then(count => {
+//         this.setState(Object.assign(this.state.user),{entries:count})
+//       })
+
+// fetch("https://api.clarifai.com/v2/models/" 
+//   + 'face-detection' + "/outputs", 
+//   returnsetupClarifaiRequestOptions(this.state.input))
+//   .then(response => response.json())
+//   .then(result => {
+//     if(result){
+//       fetch('http://localhost:3000/image',{
+//         method: 'put',
+//         headers: {'Content-type': 'application/json'},
+//         body: JSON.stringify({
+//           id : this.state.user.id
+//         })
+//       })
+//       this.displayFaceBox(this.calculateFaceLocation(result))
+//   .then(response => response.json())
+//   .then(count => {
+//         this.setState(Object.assign(this.state.user),{entries:count})
+//   .catch(err => console.log(err))
+//     })
+//   }
+// })
+
 }
 
 onRouteChange = (route)=>{
@@ -133,7 +197,7 @@ onRouteChange = (route)=>{
     ?     <div>
     <Logo/>
     <Rank name = {this.state.user.name} entries= {this.state.user.entries}/>
-    <ImageLinkForm onInputChange = {this.onInputChange} onButtonSubmit = {this.onButtonSubmit}/>
+    <ImageLinkForm onInputChange = {this.onInputChange} onPictureSubmit = {this.onPictureSubmit}/>
     <FaceRecognition box={box} imageURL={imageURL}/> 
     </div>
     : (route === 'SignIn' ? <SignIn loadUser={this.loadUser} onRouteChange = {this.onRouteChange}/> : <Register loadUser={this.loadUser} onRouteChange = {this.onRouteChange}/>) 
