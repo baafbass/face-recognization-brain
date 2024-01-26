@@ -125,53 +125,6 @@ fetch("https://api.clarifai.com/v2/models/"
     this.displayFaceBox(this.calculateFaceLocation(response))})
   .catch(err => console.log(err))
 
-
-// fetch("https://api.clarifai.com/v2/models/" 
-//   + 'face-detection' + "/outputs", 
-//   returnsetupClarifaiRequestOptions(this.state.input))
-// .then(response => {
-//     if(response){
-//       fetch('http://localhost:3000/image',{
-//         method: 'put',
-//         headers: {'Content-type': 'application/json'},
-//         body: JSON.stringify({
-//           id : this.state.user.id
-//         })
-//       })
-//     }
-//   }
-//   )
-// .then(result => {
-//   this.displayFaceBox(this.calculateFaceLocation(result))
-//   .catch(err => console.log(err))
-// })
-// .then(res => res.json())
-// .then(count => {
-//         this.setState(Object.assign(this.state.user),{entries:count})
-//       })
-
-// fetch("https://api.clarifai.com/v2/models/" 
-//   + 'face-detection' + "/outputs", 
-//   returnsetupClarifaiRequestOptions(this.state.input))
-//   .then(response => response.json())
-//   .then(result => {
-//     if(result){
-//       fetch('http://localhost:3000/image',{
-//         method: 'put',
-//         headers: {'Content-type': 'application/json'},
-//         body: JSON.stringify({
-//           id : this.state.user.id
-//         })
-//       })
-//       this.displayFaceBox(this.calculateFaceLocation(result))
-//   .then(response => response.json())
-//   .then(count => {
-//         this.setState(Object.assign(this.state.user),{entries:count})
-//   .catch(err => console.log(err))
-//     })
-//   }
-// })
-
 }
 
 onRouteChange = (route)=>{
