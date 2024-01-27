@@ -6,6 +6,7 @@ import FaceRecognition from './components/FaceRecognition/FaceRecognition';
 import SignIn from './components/SignIn/SignIn';
 import Register from './components/Register/Register';
 import Rank from './components/Rank/Rank';
+import BgParticles from './components/BgParticles/BgParticles.js';
 import {Component} from 'react'
 
 const initialState = {
@@ -113,6 +114,7 @@ onRouteChange = (route)=>{
 
       return (
     <div className="App">
+    <BgParticles/>
     <Navigation isSignedIn={isSignedIn} onRouteChange={this.onRouteChange}/>
 
     { this.state.route === 'home' 
