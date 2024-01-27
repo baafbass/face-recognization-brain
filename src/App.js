@@ -119,7 +119,7 @@ onRouteChange = (route)=>{
 
     { this.state.route === 'home' 
     ?     <div>
-    <Logo/>
+    <Logo />
     <Rank name = {this.state.user.name} entries= {this.state.user.entries}/>
     <ImageLinkForm onInputChange = {this.onInputChange} onPictureSubmit = {this.onPictureSubmit}/>
     <FaceRecognition box={box} imageURL={imageURL}/> 
