@@ -8,42 +8,6 @@ import Register from './components/Register/Register';
 import Rank from './components/Rank/Rank';
 import {Component} from 'react'
 
-const returnsetupClarifaiRequestOptions = (imageURL) =>{
-    const PAT = 'f2e9e5cd97cf46edabb328d372ecabcd';
-    const USER_ID = 'baafbass';       
-    const APP_ID = 'smartbrain';
-    const MODEL_ID = 'face-detection';    
-    const IMAGE_URL = imageURL;
-
-        const raw = JSON.stringify({
-        "user_app_id": {
-            "user_id": USER_ID,
-            "app_id": APP_ID
-        },
-        "inputs": [
-            {
-                "data": {
-                    "image": {
-                        "url": IMAGE_URL
-                    }
-                }
-            }
-        ]
-    });
-
-
-         const requestOptions = {
-        method: 'POST',
-        headers: {
-            'Accept': 'application/json',
-            'Authorization': 'Key ' + PAT
-        },
-        body: raw
-    };
-
-return requestOptions;
-}
-
 const initialState = {
     input : '',
     imageURL: '',
@@ -103,13 +67,16 @@ onInputChange = (event) =>
 
 onPictureSubmit = () => {
   this.setState({imageURL: this.state.input})
-
-
-fetch("https://api.clarifai.com/v2/models/" 
-  + 'face-detection' + "/outputs", 
-  returnsetupClarifaiRequestOptions(this.state.input))
-  .then(result => result.json())
-  .then(response => {
+   
+    fetch('http://localhost:3000/imageurl',{
+        method:'post',
+        headers: {'Content-type':'application/json'},
+        body: JSON.stringify({
+          input:this.state.input
+        })
+      })
+    .then(response => response.json())
+    .then(response => {
     if(response)
     {
       fetch('http://localhost:3000/image',{
@@ -127,7 +94,6 @@ fetch("https://api.clarifai.com/v2/models/"
     }
     this.displayFaceBox(this.calculateFaceLocation(response))})
   .catch(err => console.log(err))
-
 }
 
 onRouteChange = (route)=>{
