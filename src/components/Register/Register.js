@@ -24,7 +24,7 @@ onPasswordChange = (event) =>{
 }
 
 onSubmitRegister = () =>{
-    fetch('http://localhost:3000/register',{
+    fetch('https://smart-brain-farid-fd86a6379c20.herokuapp.com/register',{
     	method: 'post',
     	headers: {'Content-type': 'application/json'},
     	body: JSON.stringify({

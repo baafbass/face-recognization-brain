@@ -17,7 +17,7 @@ class SignIn extends React.Component {
  }
 
 onSubmitSignin = () => {
-    fetch("http://localhost:3000/signin",{
+    fetch("https://smart-brain-farid-fd86a6379c20.herokuapp.com/signin",{
     	method: 'post',
     	headers: {'Content-type':'application/json'},
     	body: JSON.stringify({
@@ -79,8 +79,6 @@ onSubmitSignin = () => {
     </article>
    	);
 	}
-   
-	   
 }
 
 export default SignIn;
