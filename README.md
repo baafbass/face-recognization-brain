@@ -22,13 +22,12 @@ Users can register and sign in and their pieces of information get stored in the
 
 <img width="960" alt="signin" src="https://github.com/baafbass/face-recognization-brain/assets/98693906/cd784fe3-228b-4364-a64c-1704b91f1f83">
 
+#### User interface for detection
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+<img width="674" alt="detectface" src="https://github.com/baafbass/face-recognization-brain/assets/98693906/f55bf82a-0b41-453c-bea7-62395c32d3ba">
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+# Conclusion
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+this application securely stores user's information and uses encryption tools like bcrypt to securely facilitate Sign in and Registrations
 
 
