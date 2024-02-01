@@ -69,7 +69,7 @@ onInputChange = (event) =>
 onPictureSubmit = () => {
   this.setState({imageURL: this.state.input})
    
-    fetch('https://smart-brain-farid-fd86a6379c20.herokuapp.com/imageurl',{
+    fetch('https://backend-smartb.onrender.com/imageurl',{
         method:'post',
         headers: {'Content-type':'application/json'},
         body: JSON.stringify({
@@ -80,7 +80,7 @@ onPictureSubmit = () => {
     .then(response => {
     if(response)
     {
-      fetch('https://smart-brain-farid-fd86a6379c20.herokuapp.com/image',{
+      fetch('https://backend-smartb.onrender.com/image',{
         method:'put',
         headers: {'Content-type':'application/json'},
         body: JSON.stringify({
