@@ -28,6 +28,6 @@ Users can register and sign in and their pieces of information get stored in the
 
 # Conclusion
 
-this application securely stores user's information and uses encryption tools like bcrypt to securely facilitate Sign in and Registrations
+this application securely stores user's information and uses encryption tools like bcrypt to securely facilitate Sign in and Registrations.
 
 
