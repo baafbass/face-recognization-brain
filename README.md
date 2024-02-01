@@ -1,35 +1,27 @@
-# Getting Started with Create React App
+# Face Recognization Brain
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+To run this project on your local host:
 
-## Available Scripts
+- Start the repo
+- Fork the repo
+- Clone the repo
+- Run `npm install`
+- Run `npm update`
+- Run `Start`
 
-In the project directory, you can run:
+### OVERVIEW
+face-recognization-brain is a React-based web application that detects faces within an image by giving the image URL in the input box.
+In this project `CLARIFAI`'s face-detection model has been used through API to ensure detection of a face within an image.
+Users can register and sign in and their pieces of information get stored in the Postgresql database.
 
-### `npm start`
+#### Register
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+<img width="959" alt="register" src="https://github.com/baafbass/face-recognization-brain/assets/98693906/ea44eadc-84e6-4c52-bd73-606ab330832d">
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+#### Sign in
 
-### `npm test`
+<img width="960" alt="signin" src="https://github.com/baafbass/face-recognization-brain/assets/98693906/cd784fe3-228b-4364-a64c-1704b91f1f83">
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
 
 **Note: this is a one-way operation. Once you `eject`, you can't go back!**
 
@@ -39,32 +31,4 @@ Instead, it will copy all the configuration files and the transitive dependencie
 
 You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
 
-## Learn More
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
